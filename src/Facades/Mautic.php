@@ -9,7 +9,7 @@ class Mautic extends Facade
     /**
      * Get Facade Accessor.
      *
-     * @return string
+     * @return  string
      */
     protected static function getFacadeAccessor()
     {
