@@ -1,4 +1,4 @@
-# Mautic API in Laravel 11.
+# Mautic API in Laravel 10
 Free and Open Source Marketing Automation API
 
 ## Requirements
@@ -16,13 +16,7 @@ Free and Open Source Marketing Automation API
 * Laravel ^10.0
 * PHP ^8.1 or newer
 
-### v 3.0.3
-* Laravel ^11.0
-* PHP ^8.2 or newer
 
-### v 3.0.4
-* Laravel ^12.0
-* PHP ^8.2 or newer
 
 ## Mautic Setup
 The API must be enabled in Mautic.
