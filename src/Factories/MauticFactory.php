@@ -95,10 +95,12 @@ class MauticFactory
         session_start();
 
         /** @var OAuth $auth */
-        $auth     = (new OAuth())->setup(
+        $auth = new OAuth();
+        $auth->setup(
             baseUrl: $setting["baseUrl"],
             clientKey: $setting["clientKey"],
             clientSecret: $setting["clientSecret"],
+            callback: $setting["callback"]
         );
 
         // Initiate process for obtaining an access token; this will redirect the user to the $authorizationUrl and/or
