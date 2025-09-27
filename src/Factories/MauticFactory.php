@@ -95,7 +95,7 @@ class MauticFactory
         session_start();
 
         /** @var OAuth $auth */
-        $auth = new OAuth();
+        $auth     = new OAuth();
         $auth->setup(
             baseUrl: $setting["baseUrl"],
             clientKey: $setting["clientKey"],
@@ -130,7 +130,7 @@ class MauticFactory
      * @param   string  $token
      * @return  mixed
      */
-    public function callMautic($method, $endpoints, $body, $token)
+    public function callMautic($method, $endpoints, $body, $token, $asQueryParams = false)
     {
         $mauticURL = $this->getMauticUrl("api/$endpoints");
         $conn      = $this->getDefaultConnection();
@@ -139,7 +139,7 @@ class MauticFactory
 
         if (!empty($body)) {
             foreach ($body as $key => $item) {
-                $params["form_params"][$key] = $item;
+                $params[$asQueryParams ? 'query' : 'json'][$key] = $item;
             }
         }
 
@@ -160,14 +160,16 @@ class MauticFactory
 
         $client  = new Client($headers);
 
+        $response = null;
         try {
             $response = $client->request($method, $mauticURL, $params);
-
             return json_decode($response->getBody(), true);
         } catch (ClientException $e) {
             return $e->getResponse()->getStatusCode();
         }
     }
+
+
 
     /**
      * Generate new token once old one expire and store in consumer table.

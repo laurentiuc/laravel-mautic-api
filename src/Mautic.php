@@ -69,14 +69,18 @@ class Mautic extends AbstractManager
      * @param   array|null      $body
      * @return  mixed
      */
-    public function request(?string $method = null, ?string $endpoints = null, ?array $body = null)
-    {
+    public function request(
+        ?string $method = null,
+        ?string $endpoints = null,
+        ?array $body = null,
+        ?bool $asQueryParams = false
+    ) {
         $consumer = MauticConsumer::whereNotNull("id")->orderBy("created_at", "desc")->first();
 
         if (empty($consumer) || $this->factory->checkExpirationTime($consumer->expires)) {
             $consumer = $this->factory->make(config("mautic.connections.main"));
         }
 
-        return $this->factory->callMautic($method, $endpoints, $body, $consumer->access_token);
+        return $this->factory->callMautic($method, $endpoints, $body, $consumer->access_token, $asQueryParams);
     }
 }
