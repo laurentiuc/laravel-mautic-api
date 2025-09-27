@@ -1,11 +1,14 @@
 {
-    "name": "costamateus/laravel-mautic-api",
+    "name": "laurentiuc/laravel-mautic-api",
     "description": "Free and Open Source Marketing Automation API",
     "license": "MIT",
     "keywords": ["mautic", "laravel", "laravel 10", "api", "sync", "automation", "email", "marketing"],
     "authors": [{
         "name": "Mateus Costa",
         "email": "mateus@costamateus.com.br"
+    }, {
+        "name": "Laurentiu C.",
+        "email": "laurentiu@omeron.co"
     }],
     "minimum-stability": "stable",
     "require": {
