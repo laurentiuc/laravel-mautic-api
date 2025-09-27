@@ -14,11 +14,21 @@ class MauticServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Publish Configuration File to base Path.
+        // Publish Configuration File
         $this->publishes([
-            __DIR__ . "/config/mautic.php" => base_path("config/mautic.php"),
-            __DIR__ . "/migrations"        => $this->app->databasePath() . "/migrations"
-        ]);
+            __DIR__ . "/config/mautic.php" => config_path("mautic.php")
+        ], 'mautic-config');
+
+        // Publish Migrations
+        $this->publishes([
+            __DIR__ . "/migrations" => database_path("migrations")
+        ], 'mautic-migrations');
+
+        // Publish all assets with a general tag
+        $this->publishes([
+            __DIR__ . "/config/mautic.php" => config_path("mautic.php"),
+            __DIR__ . "/migrations"        => database_path("migrations")
+        ], 'mautic');
     }
 
     /**

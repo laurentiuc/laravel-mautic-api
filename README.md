@@ -16,6 +16,24 @@ Free and Open Source Marketing Automation API
 * Laravel ^10.0
 * PHP ^8.1 or newer
 
+### c 3.0.23 
+
+Added publisable tags:
+
+```
+# Publish only migrations
+php artisan vendor:publish --tag=mautic-migrations
+
+# Publish only config
+php artisan vendor:publish --tag=mautic-config
+
+# Publish all mautic assets
+php artisan vendor:publish --tag=mautic
+
+# Publish from specific provider
+php artisan vendor:publish --provider="Triibo\Mautic\MauticServiceProvider"
+```
+
 ## Mautic Setup
 The API must be enabled in Mautic.
 
